@@ -15,7 +15,7 @@ var passport=require("passport");
 var LocalStrategy=require("passport-local");
 var User=require("./models/user"); 
 //Set up default mongoose connection
-var mongoDB = 'mongodb://localhost:27017/college_app';
+var mongoDB ="mongodb+srv://riyag051299:riyag051299@cluster0.bhr2h.mongodb.net/college_app?retryWrites=true&w=majority";
 mongoose.connect(mongoDB, {useNewUrlParser: true, 
               useUnifiedTopology: true,
             useCreateIndex: true,
