@@ -64,7 +64,7 @@ app.use(function(req,res, next){
 
 app.get("/",function(req,res){
     //this will be login signup page
-    res.render("landingpage.ejs");
+    res.render("landingpage.ejs",{ currentUser: req.user});
 
 });
 
@@ -73,14 +73,6 @@ app.get("/home",isLoggedIn,function(req,res){
  
        res.render("Homepage.ejs");
       
-  });
-
-
-app.get("/test",function(req,res){
-  // test page only can delete it later
-
-      res.render("test.ejs");
-
   });
 
 
@@ -113,9 +105,11 @@ app.post("/login",passport.authenticate("local",
       if(err)
       {
           console.log(err);
+          req.flash("error", "please try something else");
           return res.render("register.ejs")
       }
       passport.authenticate("local")(req,res,function(){
+        req.flash("success", "Welcome to yelpcamp "+ user.username); 
           res.redirect("/home");
       });
   });
@@ -125,6 +119,8 @@ app.post("/login",passport.authenticate("local",
 //Logout route
 app.get("/logout",isLoggedIn,function(req,res){
     req.logout();
+    req.flash("success", "Logged you out!!");
+  
     res.redirect("/home");
 });
   
@@ -235,6 +231,45 @@ app.get("/cab", async (req, res) => {
     })
     }
   })}
+})})
+
+app.post("/notes/:id/:id2/:id3",function(req,res){
+  semester.findById(req.params.id,function(err,semester){
+      if(err)
+      {
+          console.log(err);
+          res.redirect("/notes");
+      }
+      else{
+        year.findById(req.params.id2,function(err,year){
+          if(err)
+          {
+              console.log(err);
+              res.redirect("/notes");
+          }
+          else{
+
+            subject.findById(req.params.id3,function(err,subject){
+              if(err)
+              {
+                  console.log(err);
+                  res.redirect("/notes");
+              }
+              else{
+                console.log(req.body.year);
+        var name=req.body.year.toString();
+        console.log(subject);
+         console.log(name);
+       subject.pdf.push(name);
+       subject.save();
+        year.save();
+        semester.save();
+            res.redirect("/notes/" +semester._id + "/" + year._id + "/" + subject._id) ;
+       
+      }
+  })
+  }
+})}
 })})
     app.get("/notes/new",function(req,res){
         res.render("new_sem.ejs"); 
