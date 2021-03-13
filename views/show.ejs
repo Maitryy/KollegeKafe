@@ -1,7 +1,10 @@
 <% layout('./layout/boilerplate')%>
 
-<h1>hii its show pg</h1> 
-<p><%= sem.name %></p>
+<div class="container">
+    <header class="jumbotron">
+       
+<h1><%= sem.name %></h1>
+</header>
 <img src="<%= sem.image%> ">
 <% console.log(years); %>
 
@@ -11,14 +14,12 @@
 <% for(let year of years){  %>
    
             
-    <h1>
-        <strong>
+    <a href="/notes/<%= sem._id %>/<%= year._id %>" class="btn btn-primary"><strong> <%= year.name %></strong></a>
+      
 
           
- <%= year.name %>
 
-           
-    </strong> 
+
 </h1>
 <%}%>
 </p>
@@ -26,4 +27,5 @@
    
     <a class="btn btn-primary btn-large" href="/notes/<%=sem._id%>/new">ADD NEW Year</a>
     </p>
+</div>
     

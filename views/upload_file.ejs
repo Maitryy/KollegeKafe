@@ -1,12 +1,13 @@
+
 <% layout('./layout/boilerplate')%>
 
 <div class="container">
     <div class="row">
         <h1>Create new year</h1>
         <div style="width:30%; margin:25px auto; text-align: center;">
-<form action="/notes/<%=sem._id%>/<%=year._id%>" method="POST">
+<form action="/notes/<%=sem._id%>" method="POST">
     <div class="form-group">
-        <input class="form-control" type="text" name="year" placeholder="subject">
+        <input class="form-control" type="text" name="year" placeholder="google drive link">
     </div>
    
    
@@ -16,7 +17,7 @@
 
         
 </form>
-<a href="/notes/<%=sem._id%>/<%=year._id%>">GO BACK</a> 
+<a href="/notes/<%=sem._id%>">GO BACK</a> 
 </div>
 
 </div>

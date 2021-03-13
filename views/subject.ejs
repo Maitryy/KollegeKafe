@@ -1,0 +1,22 @@
+<% layout('./layout/boilerplate')%>
+
+
+<h1><%= subject.name %></h1>
+
+
+
+    
+<% for(let pdf of subject.pdf){  %>
+   
+            
+    <h1>
+        <strong>
+           
+ <%= pdf %>
+    </strong> 
+</h1>
+<%}%>
+</p>
+<p>
+    <a class="btn btn-primary btn-large" href="/notes/<%=sem._id%>/<%=year._id%>/<%=subject._id%>/new">ADD NEW file</a>
+    </p>

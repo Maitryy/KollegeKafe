@@ -1,7 +1,7 @@
 var mongoose=require('mongoose');
 var yearSchema=mongoose.Schema({
     name:Number,
-  /*  author:{
+    author:{
         id:{
             type:mongoose.Schema.Types.ObjectId,
             ref:"User"
@@ -13,8 +13,8 @@ var yearSchema=mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "subject"
         }
-    ],
-    */
+    ]
+    
 });
 
 

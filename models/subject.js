@@ -1,6 +1,6 @@
 
 var mongoose=require('mongoose');
-var subjetSchema=mongoose.Schema({
+var subjectSchema=mongoose.Schema({
     name:String,
     author:{
         id:{
@@ -15,4 +15,4 @@ var subjetSchema=mongoose.Schema({
 
 
 
-module.exports=mongoose.model("subject",yearSchema);
+module.exports=mongoose.model("subject",subjectSchema);
