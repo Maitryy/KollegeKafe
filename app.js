@@ -551,8 +551,6 @@ app.get("/notes/:id",function(req,res){
           res.redirect("/login");
         }
 
-app.listen(3002,function()
-
-{
-    console.log("yelpcamp started");
-});
+        app.listen(process.env.PORT || 5000, function(){
+          console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+        });
