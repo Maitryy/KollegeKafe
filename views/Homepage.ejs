@@ -1,22 +1,93 @@
+<Style>
+
+@keyframes animate {
+    0%, 100%{
+      card-image: url(https://images.unsplash.com/photo-1442570356633-6f94cdd73a48?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1355&q=80);
+    }
+    25%{
+      card-image: url(https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);
+    }
+    50%{
+      card-image: url(imagesused/holi.jpg);
+    }
+    75%{
+      card-image: url(imagesused/halloween-2.jpg);
+    }
+}
+
+div.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+}
+.grid-item {
+    padding: 1em;
+}
+.card-image {
+    padding: 0.5em;
+}
+</Style>
 <% layout('./layout/boilerplate')%>
 <div class="container">
-    <div class="jumbotron">
-      <a class ="nav-link" href="/notes" >NOTES/PAPERS</a>
-      <hr>
-      <a class ="nav-link" href="./travel" >TRAVEL</a>
-      <hr>
-      <a class ="nav-link" href="./cab" >CAB/TRAIN</a>
-    </div>
+    
 
+    <div class="grid">
+        <div class="grid-item">
+          <div class="card">
+            <img class="card-img " src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="Rome" />
+            <div class="card-content">
+              <h1 class="card-header">Last Minute Exam Preparation ??</h1>
+              <p class="card-text">
+                Rome is known for its stunning <strong> architecture</strong>,
+                with the Colleseum, Pantheon, and Trevi Fountain as the main
+                attractions.
+              </p>
+              <a class ="nav-link btn btn-primary btn-medium" href="/notes" >NOTES/PAPERS</a>
+              
+            </div>
+          </div>
+        </div>
+        <div class="grid-item">
+          <div class="card">
+            <img
+              class="card-img"
+              src="https://images.unsplash.com/photo-1503457574462-bd27054394c1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+              alt="Grand Canyon"
+            />
+            <div class="card-content">
+              <h1 class="card-header">Make Others Jealous.. </h1>
+              <p class="card-text">
+                One of the world's natural wonders, the iconic Grand Canyon draws
+                oohs and aahs from visitors perched at the edge of its
+                <strong>towering cliffs</strong>.
+                <a class ="nav-link btn btn-primary btn-medium " href="./travel" >TRAVEL</a>
+              </p>
+              
+            </div>
+          </div>
+        </div>
+        <div class="grid-item">
+          <div class="card">
+            <img class="card-img" src="https://images.unsplash.com/photo-1442570356633-6f94cdd73a48?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1055&q=80" alt="Maldives" />
+            <div class="card-content">
+              <h1 class="card-header">Afraid of Travelling Alone ???</h1>
+              <p class="card-text">
+                We're here to help you... Share Your extra tickets or Cab details to find a person to travel with. Make your boring journies to some memorable experiences.
+              </p>
+              <a class="btn btn-primary btn-medium nav-link"  href="./cab" >CAB/TRAIN</a>
+            </div>
+          </div>
+        </div>
+      </div>
 
+   
 
 
    
 
-  <div class="navbar navbar-expand-lg navbar-dark bg-dark sticky-bottom navbar-fixed-bottom">
+  <!-- <div class="navbar navbar-expand-lg navbar-dark bg-dark sticky-bottom navbar-fixed-bottom">
       <div class="container"><strong>Contact Us</strong>
           <ul>
               <li><a href="#">Mail</a></li>
           </ul>
       </div>
-  </div>
+  </div> -->
