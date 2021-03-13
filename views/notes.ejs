@@ -1,4 +1,8 @@
 <style>
+    body{
+  background-image: url("https://images.unsplash.com/photo-1531132076534-0120b6aa12cd?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80");
+  background-size: cover;
+}
 @import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
 header.jumbotron {
     background-image: url(https://images.unsplash.com/photo-1525708827920-7d53586a1ab1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80);
@@ -7,6 +11,7 @@ header.jumbotron {
     object-fit: cover;
     background-size: auto;
     background-repeat: no-repeat;
+    background-position: center;
 }
 
 .grid {
@@ -117,27 +122,13 @@ header.jumbotron {
 </div>
 </header>
 
-<!-- <div class="grid row ">
-    <div class="grid-item col-sm">
-      <div class="card">
-        <img class="card-img" src="" onerror="this.src='http:///i.imgur.com/hfM1J8s.png'" alt="Rome" />
-        <div class="card-content">
-          <h1 class="card-header"></h1>
-          <p class="card-text">
-            Rome is known for its stunning <strong> architecture</strong>,
-            with the Colleseum, Pantheon, and Trevi Fountain as the main
-            attractions.
-          </p>
-          <a href="/notes/" class="btn card-btn btn-primary">more info</a>
-          
-        </div>
-      </div>
-    </div> -->
     
 
 
 <% semester.forEach(function(semester) { %>
-    <div class="row">
+    
+ <div class="container">
+     <div class="row">
     <div class="grid col col-lg-2">
         <div class="grid-item">
           <div class="card">
@@ -156,7 +147,7 @@ header.jumbotron {
         </div>
     </div>
     </div>
- 
+ </div>
     <!-- <div class="col-sm-3" style="margin: 20px;">
     <div class="card" style="width: 18rem"> 
         <img class="card-img-top" alt="card-img" src="" onerror="this.src='http:///i.imgur.com/hfM1J8s.png'">

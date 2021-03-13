@@ -1,33 +1,177 @@
+<style>
+    body{
+  background-image: url("https://images.unsplash.com/photo-1531132076534-0120b6aa12cd?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80");
+  background-size: cover;
+  opacity: 0.7em;
+
+}
+    @import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+    header.jumbotron {
+        background-image: url(https://images.unsplash.com/photo-1527597295040-dabe52ba22ad?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80);
+        
+        width: 100%;
+        object-fit: cover;
+        background-size: auto;
+        background-repeat: no-repeat;
+        background-position: center;
+        
+    }
+    
+    .grid {
+      display: grid;
+      width: 114em;
+      grid-gap: 6rem;
+      grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+      align-items: start;
+    }
+    
+    .grid-item {
+      background-color: #fff;
+      border-radius: 0.4rem;
+      overflow: hidden;
+      box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: 0.2s;
+      padding: 0.5em;
+    }
+    
+    .grid-item:hover {
+      transform: translateY(-0.5%);
+      box-shadow: 0 4rem 8rem rgba(0, 0, 0, 0.5);
+    }
+        .card-img {
+      display: block;
+      width: 100%;
+      height: 20rem;
+      object-fit: cover;
+    }
+    
+    .card-content {
+      padding: 1.0rem;
+    }
+    
+    .card-header {
+        text-align: center;
+      font-size: 3rem;
+      font-weight: 500;
+      color: #0d0d0d;
+      margin-bottom: 1.5rem;
+    }
+    
+    .card-text {
+      font-size: 1.3rem;
+      line-height: 1.5;
+      color: #3d3d3d;
+      margin-bottom: 2.5rem;
+      text-align: center;
+      
+    }
+    
+    .card-btn {
+      display: block;
+      width: 100%;
+      padding: 1.5rem;
+      font-size: 1.5rem;
+      text-align: center;
+      color: #3363ff;
+      background-color: #d8e0fd;
+      border: none;
+      border-radius: 0.4rem;
+      transition: 0.2s;
+      cursor: pointer;
+      letter-spacing: 0.1rem;
+    }
+    
+    .card-btn span {
+      margin-left: 1rem;
+      transition: 0.2s;
+    }
+    
+    .card-btn:hover,
+    .card-btn:active {
+      background-color: #c2cffc;
+    }
+    
+    .card-btn:hover span,
+    .card-btn:active span {
+      margin-left: 1.5rem;
+      
+    }
+    .card-img {
+        padding: 0.5em;
+      display: block;
+      width: 100%;
+      height: 20rem;
+      object-fit: cover;
+    }
+    .notes {
+        text-align: center;
+        text-decoration-color: #c2cffc;
+        color: #fff;
+    }
+    
+    </style>
 <% layout('./layout/boilerplate')%>
 
-
-  <div class="container">
-    <div class="jumbotron">
-      <h1>Cab</h1>
+<div class="container">
+    <header class="jumbotron">
+            <div class="container">  
+    <h1 class="notes ">Car Pool</h1>
+    
+    <p>
+    <div class="notes">
+        <a class="btn btn-primary btn-large" href="/cab/new">ADD NEW DETAILS</a>
+    </div>
+    </p>
+    </div>
+    </header>
+  
       <ul>
          <% console.log(cabs) %>  
           <% for(let cab of cabs) { %>
-            <div class="card">
-                <li class="card-title"> <%= cab.title %>  </li>
-                <div class="card-body">
-                    <li><%= cab.name %> </li>
-                    <li><%= cab.destination %> </li>
-                    <li><%= cab.location %> </li>
-                </div>
+            <div class="container">
+                <div class="row">
+               <div class="grid col col-lg-2">
+                   <div class="grid-item">
+                     <div class="card">
+                       <img class="card-img" src="https://images.unsplash.com/photo-1532203511713-4d9b45fe3ada?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=618&q=80" onerror="this.src='http:///i.imgur.com/hfM1J8s.png'" alt="Rome" />
+                       <div class="card-content">
+                         <h1 class="card-header"><%= cab.title %></h1>
+                         <div class="card-text">
+                            <p>Name: <%= cab.name %> </p>
+                            <p>Destination: <%= cab.location1 %> </p>
+                            <p>Location: <%= cab.location2 %> </p>
+                            <p>Contact: <%= cab.contact %> </p>
+                         </div>
+                         
+                       </div>
+                     </div>
+                   </div>
+               </div>
+               </div>
             </div>
+            
             <% } %>  
       </ul>
-    </div>   
+    </div>
+  
+    <div class="container">
+        <header class="jumbotron">
+                <div class="container">  
+        <h1 class="notes ">Share Your Destination and Starting Point Now..</h1>
+        
+        
+        </div>
+        </header>
 
-
-<h2>Share Your Destination and Starting Point </h2>
+<!-- <h2>Share Your Destination and Starting Point </h2>
     
-<a class="btn btn-primary btn-large" href="/cab/new">Share</a>
+<a class="btn btn-primary btn-large" href="/cab/new">Share</a> -->
 
-<div class="navbar navbar-expand-lg navbar-dark bg-dark sticky-bottom navbar-fixed-bottom">
+<!-- <div class="navbar navbar-expand-lg navbar-dark bg-dark sticky-bottom navbar-fixed-bottom">
     <div class="container"><strong>Contact Us</strong>
         <ul>
             <li><a href="#">Mail</a></li>
         </ul>
     </div>
-</div>
+</div> -->

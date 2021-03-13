@@ -507,9 +507,10 @@ app.get("/notes/:id",function(req,res){
       var image=req.body.image;
       var title=req.body.title;
       var description=req.body.description;
+      var name=req.body.name;
      
   
-      var newImg={title:title ,image:image, description: description};
+      var newImg={title:title ,image:image, description: description, name:name};
       Travel.create(newImg,function(err,camp)
       {
           if(err)
@@ -527,11 +528,12 @@ app.get("/notes/:id",function(req,res){
       app.post("/cab",function(req,res){
         var name=req.body.name;
         var title=req.body.title;
-        var destination=req.body.destination;
-        var location=req.body.location;
+        var location1=req.body.location1;
+        var location2=req.body.location2;
+        var contact=req.body.contact;
        
     
-        var newImg={title:title ,name:name, destination: destination, location: location}
+        var newImg={title:title ,name:name, location1: location1, location2: location2, contact: contact}
         Cab.create(newImg,function(err,camp)
         {
             if(err)

@@ -6,7 +6,7 @@ const CabSchema = new Schema({
 	location1 : String,
 	location2 : String,
 	price: Number,
-	description: String
+	contact: String
 })
 
 module.exports = mongoose.model('Cab', CabSchema)
