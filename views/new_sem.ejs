@@ -10,8 +10,6 @@
 .clearfix:after,.clearfix:before{content:'';display:table}
 .clearfix:after{clear:both;display:block}
 a{color:inherit;text-decoration:none}
-
-
 .login-wrap{
 	width:100%;
 	margin:auto;
@@ -142,9 +140,6 @@ a{color:inherit;text-decoration:none}
 .login-html .sign-up:checked + .tab + .login-form .sign-up-htm{
 	transform:rotate(0);
 }
-<<<<<<< Updated upstream
-=======
-
 .hr{
 	height:2px;
 	margin:60px 0 50px 0;
@@ -157,7 +152,7 @@ a{color:inherit;text-decoration:none}
 
 <div class="login-wrap ">
 	<div class="login-html">
-		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">CREATE NEW SEM</label>
+		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">ADD NEW SEMESTER</label>
 		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
 		<div class="login-form">
 
@@ -166,52 +161,21 @@ a{color:inherit;text-decoration:none}
                 <form action="/notes" method="post">
                     <div class="group">
                         <label for="name" class="label">Semester</label>
-                        <input name="name" id="user" type="text" class="input">
+                        <input name="name" id="name" type="text" class="input">
                     </div>
                     <div class="group">
                         <label for="image" class="label">Image URL</label>
-                        <input name="image" id="pass" type="text" class="input" >
+                        <input name="image" id="image" type="password" class="input" data-type="password">
                     </div>
-                    
+
                     <div class="group">
-                        <input type="submit" class="button" value="submit">
+                        <input type="submit" class="button" value="Submit">
                     </div>
                     <div class="hr"></div>
-                    <a href="/notes">GO BACK</a>
-                    
+
                 </form>
+                <a href="/notes">GO BACK</a> 
 			</div>
 		</div>
 	</div>
-</div> -->
-
-<div class="container">
-    <div class="row">
-        <h1>Create new semester</h1>
-        <div style="width:30%; margin:25px auto; text-align: center;">
-<form action="/notes" method="POST" novalidate class="validated-form">
-    <div class="form-group mb-3">
-        <label class="form-label" for="name">Semester</label>
-        <input class="form-control" type="text" name="name" placeholder="semester">
-    </div>
-    <div class="form-group mb-3">
-        <label class="form-label" for="image">Image URL</label>
-        <input  class="form-control" type="text" name="image"  placeholder="img url">
-    </div>
-   
-        <div class="form-group mb-3">
-        <button class="btn btn-large btn-primary btn-block"> submit</button>
-        </div>
->>>>>>> Stashed changes
-
-.hr{
-	height:2px;
-	margin:60px 0 50px 0;
-	background:rgba(255,255,255,.2);
-}
-.foot-lnk{
-	text-align:center;
-}
-</style>
-
-
+</div>
