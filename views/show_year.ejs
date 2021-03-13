@@ -1,0 +1,31 @@
+<% layout('./layout/boilerplate')%>
+
+<div class="container">
+    <header class="jumbotron">
+       
+<h1><%= year.name %></h1>
+</header>
+
+
+
+    
+<% for(let sub of subjects){  %>
+
+    <a href="/notes/<%= sem._id %>/<%= year._id %>/<%=sub._id%>" class="btn btn-primary"><strong> <%= sub.name %></strong>
+    </a>
+   
+            
+
+          
+
+
+
+<%}%>
+
+
+<p>
+    <br>
+    <a class="btn btn-primary btn-large" href="/notes/<%=sem._id%>/<%=year._id%>/new">ADD NEW subject</a>
+    </p>
+</div>
+    

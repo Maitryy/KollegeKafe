@@ -4,6 +4,7 @@ const path = require('path');
 var bodyParser= require ("body-parser");
 var year=require("./models/year");
 var semester=require("./models/semester");
+var subject=require("./models/subject");
 const Travel=require("./models/travel");
 const Cab=require("./models/cab");
 var mongoose = require('mongoose');
@@ -135,6 +136,39 @@ app.get("/cab", async (req, res) => {
       }
     })
   })
+  app.post("/notes/:id/:id2",function(req,res){
+    semester.findById(req.params.id,function(err,semester){
+        if(err)
+        {
+            console.log(err);
+            res.redirect("/notes");
+        }
+        else{
+          year.findById(req.params.id2,function(err,year){
+            if(err)
+            {
+                console.log(err);
+                res.redirect("/notes");
+            }
+            else{
+          var name=req.body.year;
+           console.log(req.body);
+          var newImg={name:name };
+          subject.create(newImg,function(err,com){
+            if(err)
+            console.log(err);
+            else{
+
+               year.subject.push(com);
+          year.save();
+          semester.save();
+              res.redirect("/notes/" +semester._id + "/" + year._id) ;
+         
+        }
+    })
+    }
+  })}
+})})
     app.get("/notes/new",function(req,res){
         res.render("new_sem.ejs"); 
     });
@@ -148,53 +182,216 @@ app.get("/cab", async (req, res) => {
       })
      
   });
+  app.get("/notes/:id/:id2/new",function(req,res){
+    semester.findById(req.params.id,function(err,campground){
+        if(err)
+        console.log(err);
+        else
+        {
+          year.findById(req.params.id2,function(err,year){
+            if(err)
+            console.log(err);
+            else
+            res.render("new_subject.ejs",{sem: campground , year:year});
+        })
+       
+    }})
 
-    app.get("/notes/:id",function(req,res){
+   
+});
+
+
+app.get("/notes/:id",function(req,res){
+  var years=[];
+
+
+
+    semester.findById(req.params.id, function(err,foundCampground)
+    {
+  
+        if(err)
+           console.log(error);
+        else{
+          let n=foundCampground.year.length;
+          let i=0;
+
+          console.log(foundCampground.year);
+          
+          foundCampground.year.forEach(function(y)
+          {
+            
+            year.findById(y, function(err,year)
+            {
+                if(err)
+                   console.log(error);
+                else{
+                 
+                 i++;
+                  years.push(year);
+                  console.log(years);
+                  if(i==n)
+                
+                    res.render("show.ejs",{sem:foundCampground , years:years});
+             } })
+           
+          } 
+    )
+    if(n==0)
+    res.render("show.ejs",{sem:foundCampground , years:years});
+}
+
+}
+
+   
+
+);
+
+});
+    app.get("/notes/:id/:id2",function(req,res){
+      var subjects=[];
       var years=[];
-
 
 
         semester.findById(req.params.id, function(err,foundCampground)
         {
-       let n=foundCampground.year.length;
-         let i=0;
+      
             if(err)
-               console.log(error);
+               console.log(err);
             else{
-
-              console.log(foundCampground.year);
+              year. findById(req.params.id2, function(err,foundYear)
+              {
+                if(err)
+                     console.log(err);
+ 
+                     else{
               
-              foundCampground.year.forEach(function(y)
+             let n=foundYear.subject.length;
+             console.log(n);
+               let i=0;
+                 
+              foundYear.subject.forEach(function(y)
               {
                 
-                year.findById(y, function(err,year)
+                subject.findById(y, function(err,year)
                 {
                     if(err)
-                       console.log(error);
+                       console.log(err);
                     else{
                      
                      i++;
-                      years.push(year);
-                      console.log(years);
-                      if(i==n)
+                      subjects.push(year);
                     
-                        res.render("show.ejs",{sem:foundCampground , years:years});
+                      if(i==n)
+                      
+                        res.render("show_year.ejs",{sem:foundCampground , year:foundYear ,subjects:subjects});
                  } })
                
               } 
         )
-      
+        if(n==0)
+    res.render("show_year.ejs",{sem:foundCampground , year:foundYear ,subjects:subjects});
     }
-    if(n==0)
-    res.render("show.ejs",{sem:foundCampground , years:years});
-  }
+  
+  })}
+   
+       
+   
+ } );
+
+    });
+    app.get("/notes/:id/:id2/:id3",function(req,res){
+      var pdf=[];
+      
+
+
+        semester.findById(req.params.id, function(err,foundCampground)
+        {
+      
+            if(err)
+               console.log(err);
+            else{
+              year. findById(req.params.id2, function(err,foundYear)
+              {
+                if(err)
+                     console.log(err);
+ 
+                     else{
+                      subject. findById(req.params.id3, function(err,subject)
+                      {
+                        if(err)
+                             console.log(err);
+         
+                             else{
+              
+             let n=subject.pdf.length;
+             console.log(n);
+               let i=0;
+                 
+               subject.pdf.forEach(function(y)
+              {
+                
+                    if(err)
+                       console.log(err);
+                    else{
+                     
+                     i++;
+                      pdf.push(y);
+                    
+                      if(i==n)
+                      
+                        res.render("subject.ejs",{sem:foundCampground , year:foundYear ,subject:subject,pdf:pdf});
+                 } })
+                 if(n==0)
+                 res.render("subject.ejs",{sem:foundCampground , year:foundYear ,subject:subject,pdf:pdf});
+              } }
+  
+        )}}
+       );
+    }
+  
+  })}
    
        
    
   );
+  app.get("/notes/:id/:id2/:id3/new",function(req,res){
+  
 
-    });
+      semester.findById(req.params.id, function(err,foundCampground)
+      {
+    
+          if(err)
+             console.log(err);
+          else{
+            year. findById(req.params.id2, function(err,foundYear)
+            {
+              if(err)
+                   console.log(err);
 
+                   else{
+                    subject. findById(req.params.id3, function(err,subject)
+                    {
+                      if(err)
+                           console.log(err);
+       
+                           else{
+           
+                    
+                      res.render("upload_file.ejs",{sem:foundCampground , year:foundYear ,subject:subject});
+            
+            } }
+
+      )}}
+     );
+  }
+
+})}
+ 
+     
+ 
+);
+
+   
     app.get("/travel/new",function(req,res){
       //this will be login signup page
       res.render("new_travel.ejs" );
