@@ -1,0 +1,28 @@
+<% layout('./layout/boilerplate')%>
+
+<div class="container">
+    <div class="jumbotron">
+      <h1>Travel blogs</h1>
+      <ul>
+         <% console.log(travels) %>  
+          <% for(let travel of travels) { %>
+            <div class="card">
+                <li class="card-title"> <%= travel.title %>  </li>
+                <div class="card-body">
+                    <li><%= travel.name %> </li>
+                    <li><%= travel.location %> </li>
+                </div>
+            </div>
+            <% } %>  
+      </ul>
+    </div>   
+    <h2>Add Your Travel Experience Now..!!</h2>
+    <a class="btn btn-primary btn-large" href="/travel/new">Share</a>
+
+  <!-- <div class="navbar navbar-expand-lg navbar-dark bg-dark sticky-bottom navbar-fixed-bottom">
+      <div class="container"><strong>Contact Us</strong>
+          <ul>
+              <li><a href="#">Mail</a></li>
+          </ul>
+      </div>
+  </div> -->

@@ -1,0 +1,29 @@
+<% layout('./layout/boilerplate')%>
+
+<div class="container">
+    <div class="row">
+        <h1>Create new Travel</h1>
+        <div style="width:30%; margin:25px auto; text-align: center;">
+<form action="/cab" method="POST" novalidate class="validated-form">
+    <div class="form-group mb-3">
+        <label class="form-label" for="title">Title</label>
+        <input class="form-control" type="text" name="title" placeholder="semester">
+    </div>
+    <div class="form-group mb-3">
+        <label class="form-label" for="image">Name</label>
+        <input  class="form-control" type="text" name="name"  placeholder="name">
+    </div>
+    <div class="form-group mb-3">
+        <label class="form-label" for="image">Destination</label>
+        <input  class="form-control" type="text" name="destination"  placeholder="destination">
+    </div>
+    <div class="form-group mb-3">
+        <label class="form-label" for="image">Current Location</label>
+        <input  class="form-control" type="text" name="location"  placeholder="location">
+    </div>
+   
+        <div class="form-group mb-3">
+        <button class="btn btn-large btn-primary btn-block"> submit</button>
+        </div>
+        
+</form>

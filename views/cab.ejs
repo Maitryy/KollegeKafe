@@ -1,0 +1,33 @@
+<% layout('./layout/boilerplate')%>
+
+
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Cab</h1>
+      <ul>
+         <% console.log(cabs) %>  
+          <% for(let cab of cabs) { %>
+            <div class="card">
+                <li class="card-title"> <%= cab.title %>  </li>
+                <div class="card-body">
+                    <li><%= cab.name %> </li>
+                    <li><%= cab.destination %> </li>
+                    <li><%= cab.location %> </li>
+                </div>
+            </div>
+            <% } %>  
+      </ul>
+    </div>   
+
+
+<h2>Share Your Destination and Starting Point </h2>
+    
+<a class="btn btn-primary btn-large" href="/cab/new">Share</a>
+
+<div class="navbar navbar-expand-lg navbar-dark bg-dark sticky-bottom navbar-fixed-bottom">
+    <div class="container"><strong>Contact Us</strong>
+        <ul>
+            <li><a href="#">Mail</a></li>
+        </ul>
+    </div>
+</div>

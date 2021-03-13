@@ -1,0 +1,22 @@
+<% layout('./layout/boilerplate')%>
+
+
+<h1><%= year.name %></h1>
+
+
+
+    
+<% for(let year of year.subject){  %>
+   
+            
+    <h1>
+        <strong>
+            <% console.log(subject )%>
+ <%= subject.name %>
+    </strong> 
+</h1>
+<%}%>
+</p>
+<p>
+    <a class="btn btn-primary btn-large" href="/notes/<%=sem._id%>/new">ADD NEW SEMESTER</a>
+    </p>

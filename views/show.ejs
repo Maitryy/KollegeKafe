@@ -1,0 +1,29 @@
+<% layout('./layout/boilerplate')%>
+
+<h1>hii its show pg</h1> 
+<p><%= sem.name %></p>
+<img src="<%= sem.image%> ">
+<% console.log(years); %>
+
+<p>
+    heyyyyyyyyy
+    
+<% for(let year of years){  %>
+   
+            
+    <h1>
+        <strong>
+
+          
+ <%= year.name %>
+
+           
+    </strong> 
+</h1>
+<%}%>
+</p>
+<p>
+   
+    <a class="btn btn-primary btn-large" href="/notes/<%=sem._id%>/new">ADD NEW Year</a>
+    </p>
+    

@@ -1,0 +1,30 @@
+<% layout('./layout/boilerplate')%>
+
+<div class="container">
+    <header class="jumbotron">
+        <div class="container">  
+<h1>NOTES</h1>
+
+<p>
+<a class="btn btn-primary btn-large" href="/notes/new">ADD NEW SEMESTER</a>
+</p>
+</div>
+</header>
+
+<div class="row">
+<% semester.forEach(function(semester) { %>
+ 
+    <div class="col-sm-3" style="margin: 20px;">
+    <div class="card" style="width: 18rem"> 
+        <img class="card-img-top" alt="card-img" src="<%= semester.image %>" onerror="this.src='http:///i.imgur.com/hfM1J8s.png'">
+        <div class="card-body">
+            <h5 class="card-title"> <%= semester.name %></h4>
+            <a href="/notes/<%= semester._id %>" class="btn btn-primary">more info</a>
+        </div>
+  </div>
+  </div>
+        
+<% }); %>
+</div>
+</div>
+</div>
