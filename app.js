@@ -3,13 +3,17 @@ var app=express();
 const path = require('path');
 var bodyParser= require ("body-parser");
 var year=require("./models/year");
+var methodOverride=require('method-override');
 var semester=require("./models/semester");
 var subject=require("./models/subject");
 const Travel=require("./models/travel");
 const Cab=require("./models/cab");
 var mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
-
+var flash=require('connect-flash');
+var passport=require("passport");
+var LocalStrategy=require("passport-local");
+var User=require("./models/user"); 
 //Set up default mongoose connection
 var mongoDB = 'mongodb://localhost:27017/college_app';
 mongoose.connect(mongoDB, {useNewUrlParser: true, 
@@ -33,6 +37,29 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(bodyParser.urlencoded({extended: true})); 
 
 
+app.use(methodOverride("_method"));
+app.use(flash());
+
+
+app.use(require("express-session")({
+   secret:"vibhu bola h",
+   resave:false,
+   saveUninitialized:false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+//To use in all the things
+app.use(function(req,res, next){
+    res.locals.currentUser= req.user;
+    res.locals.error=req.flash("error"); 
+    res.locals.success=req.flash("success"); 
+    next();
+});
+
 
 
 app.get("/",function(req,res){
@@ -41,7 +68,7 @@ app.get("/",function(req,res){
 
 });
 
-app.get("/home",function(req,res){
+app.get("/home",isLoggedIn,function(req,res){
   //this will be login signup page
  
        res.render("Homepage.ejs");
@@ -62,6 +89,38 @@ app.get("/login",function(req,res){
 
 
 });
+
+app.post("/login",passport.authenticate("local", 
+{
+    successRedirect:"/home",
+    failureRedirect:"/login"
+}),
+ function(req,res){
+
+ });
+ app.post("/register",function(req,res){
+
+  var newUser=new User({username: req.body.username}); 
+  User.register(newUser, req.body.password, function(err, user){
+      if(err)
+      {
+          console.log(err);
+          return res.render("register.ejs")
+      }
+      passport.authenticate("local")(req,res,function(){
+          res.redirect("/home");
+      });
+  });
+
+});
+
+//Logout route
+app.get("/logout",isLoggedIn,function(req,res){
+    req.logout();
+    res.redirect("/home");
+});
+  
+
 // app.get("/travel",function(req,res){
 //     //this will be login signup page
 //     res.render("travel.ejs", {travels} );
@@ -444,8 +503,15 @@ app.get("/notes/:id",function(req,res){
             }
         });
         });
+        function isLoggedIn(req,res,next){
+          if(req.isAuthenticated()){
+              return next();
+          }
+          req.flash("error" , "You need to be logged in to do that!");
+          res.redirect("/login");
+        }
 
-app.listen(3001,function()
+app.listen(3002,function()
 
 {
     console.log("yelpcamp started");

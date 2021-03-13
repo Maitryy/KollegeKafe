@@ -1,3 +1,9 @@
+<style>
+
+  .user{
+    padding: 0.5em;
+  }
+</style>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top navbar-fixed-top">
         <div class="container">
@@ -11,7 +17,16 @@
             <!-- can add more elements here -->
             </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li class ="nav-item"><a class ="nav-link" href="/" >Logout</a></li>
+          <% if(!currentUser){ %>
+         
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">sign up</a></li>
+           <% }
+            else { %>
+              <li class="user"><a href="#">signed in As <%=currentUser.username %>  </a></li>
+            <li class="user"><a href="/logout">Logout</a></li>
+           <% }%>
+         
         </ul>
       </div>
     </div>
