@@ -445,9 +445,7 @@ app.get("/notes/:id",function(req,res){
                  } })
                  if(n==0)
                  res.render("subject.ejs",{sem:foundCampground , year:foundYear ,subject:subject,pdf:pdf});
-              } }
-  
-        )}}
+              } } )}}
        );
     }
   
