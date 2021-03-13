@@ -487,10 +487,7 @@ app.get("/notes/:id",function(req,res){
      );
   }
 
-})}
- 
-     
- 
+})} 
 );
 
    
