@@ -1,28 +1,171 @@
+<style>
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+header.jumbotron {
+    background-image: url(https://images.unsplash.com/photo-1525708827920-7d53586a1ab1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80);
+    
+    width: 100%;
+    object-fit: cover;
+    background-size: auto;
+    background-repeat: no-repeat;
+}
+
+.grid {
+  display: grid;
+  width: 114em;
+  grid-gap: 6rem;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  align-items: start;
+}
+
+.grid-item {
+  background-color: #fff;
+  border-radius: 0.4rem;
+  overflow: hidden;
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: 0.2s;
+  padding: 0.5em;
+}
+
+.grid-item:hover {
+  transform: translateY(-0.5%);
+  box-shadow: 0 4rem 8rem rgba(0, 0, 0, 0.5);
+}
+    .card-img {
+  display: block;
+  width: 100%;
+  height: 20rem;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 1.0rem;
+}
+
+.card-header {
+    text-align: center;
+  font-size: 3rem;
+  font-weight: 500;
+  color: #0d0d0d;
+  margin-bottom: 1.5rem;
+}
+
+.card-text {
+  font-size: 1.3rem;
+  line-height: 1.5;
+  color: #3d3d3d;
+  margin-bottom: 2.5rem;
+  text-align: justify;
+}
+
+.card-btn {
+  display: block;
+  width: 100%;
+  padding: 1.5rem;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #3363ff;
+  background-color: #d8e0fd;
+  border: none;
+  border-radius: 0.4rem;
+  transition: 0.2s;
+  cursor: pointer;
+  letter-spacing: 0.1rem;
+}
+
+.card-btn span {
+  margin-left: 1rem;
+  transition: 0.2s;
+}
+
+.card-btn:hover,
+.card-btn:active {
+  background-color: #c2cffc;
+}
+
+.card-btn:hover span,
+.card-btn:active span {
+  margin-left: 1.5rem;
+  
+}
+.card-img {
+    padding: 0.5em;
+  display: block;
+  width: 100%;
+  height: 20rem;
+  object-fit: cover;
+}
+.notes {
+    text-align: center;
+    text-decoration-color: #c2cffc;
+    color: #c2cffc;
+}
+
+</style>
 <% layout('./layout/boilerplate')%>
 
 <div class="container">
-    <header class="jumbotron">
+<header class="jumbotron">
         <div class="container">  
-<h1>NOTES</h1>
+<h1 class="notes ">NOTES</h1>
 
 <p>
-<a class="btn btn-primary btn-large" href="/notes/new">ADD NEW SEMESTER</a>
+<div class="notes">
+    <a class="btn btn-primary btn-large" href="/notes/new">ADD NEW SEMESTER</a>
+</div>
 </p>
 </div>
 </header>
 
-<div class="row">
+<!-- <div class="grid row ">
+    <div class="grid-item col-sm">
+      <div class="card">
+        <img class="card-img" src="" onerror="this.src='http:///i.imgur.com/hfM1J8s.png'" alt="Rome" />
+        <div class="card-content">
+          <h1 class="card-header"></h1>
+          <p class="card-text">
+            Rome is known for its stunning <strong> architecture</strong>,
+            with the Colleseum, Pantheon, and Trevi Fountain as the main
+            attractions.
+          </p>
+          <a href="/notes/" class="btn card-btn btn-primary">more info</a>
+          
+        </div>
+      </div>
+    </div> -->
+    
+
+
 <% semester.forEach(function(semester) { %>
+    <div class="row">
+    <div class="grid col col-lg-2">
+        <div class="grid-item">
+          <div class="card">
+            <img class="card-img" src="<%= semester.image %>" onerror="this.src='http:///i.imgur.com/hfM1J8s.png'" alt="Rome" />
+            <div class="card-content">
+              <h1 class="card-header"><%= semester.name %></h1>
+              <p class="card-text">
+                Rome is known for its stunning <strong> architecture</strong>,
+                with the Colleseum, Pantheon, and Trevi Fountain as the main
+                attractions.
+              </p>
+              <a href="/notes/<%= semester._id %>" class="btn card-btn btn-primary">more info</a>
+              
+            </div>
+          </div>
+        </div>
+    </div>
+    </div>
  
-    <div class="col-sm-3" style="margin: 20px;">
+    <!-- <div class="col-sm-3" style="margin: 20px;">
     <div class="card" style="width: 18rem"> 
-        <img class="card-img-top" alt="card-img" src="<%= semester.image %>" onerror="this.src='http:///i.imgur.com/hfM1J8s.png'">
+        <img class="card-img-top" alt="card-img" src="" onerror="this.src='http:///i.imgur.com/hfM1J8s.png'">
         <div class="card-body">
-            <h5 class="card-title"> <%= semester.name %></h4>
-            <a href="/notes/<%= semester._id %>" class="btn btn-primary">more info</a>
+            <h5 class="card-title"> </h4>
+            <a href="/notes/" class="btn btn-primary">more info</a>
         </div>
   </div>
-  </div>
+  </div> -->
         
 <% }); %>
 </div>

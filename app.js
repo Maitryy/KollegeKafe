@@ -76,6 +76,14 @@ app.get("/home",isLoggedIn,function(req,res){
   });
 
 
+app.get("/test",function(req,res){
+  // test page only can delete it later
+
+      res.render("test.ejs");
+
+  });
+
+
 app.get("/register",function(req,res){
   //this will be login signup page
   res.render("register.ejs");

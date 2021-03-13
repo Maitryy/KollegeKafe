@@ -1,5 +1,8 @@
-<Style>
-
+<style>
+body{
+  background-image: url("https://images.unsplash.com/photo-1531132076534-0120b6aa12cd?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80");
+  background-size: cover;
+}
 @keyframes animate {
     0%, 100%{
       card-image: url(https://images.unsplash.com/photo-1442570356633-6f94cdd73a48?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1355&q=80);
@@ -24,16 +27,76 @@ div.card {
 }
 .card-image {
     padding: 0.5em;
+    width:60rem;
+
 }
-</Style>
+.card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+}
+img {
+  height: auto;
+}
+
+</style>
 <% layout('./layout/boilerplate')%>
-<div class="container">
+<div class="container" >
+  <div class="row">
+    
     
 
-    <div class="grid">
+    <div style=" margin:35px; background-color: rgb(255, 255, 255,0.8);">
+      <div class="row">
+        <div class="card-body col-sm-6">
+          <img class="card-img-top" src="https://images.unsplash.com/photo-1503457574462-bd27054394c1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="Card image cap">
+          </div>
+          <div class="card-body col-sm-6">
+          <h5 class="card-title">Make Others Jealous..</h5>
+          <p class="card-text">One of the world's natural wonders, the iconic Grand Canyon draws
+            oohs and aahs from visitors perched at the edge of its
+            <strong>towering cliffs</strong>.</p>
+            <a class ="nav-link btn btn-primary btn-medium "style="background-color: rgb(0, 41, 21);" href="./travel" >TRAVEL</a>
+        </div>
+      </div>
+    </div>
+
+    <div style=" margin:35px; background-color: rgba(255, 255, 255, 0.8);">
+      <div class="row" >
+        <div class="card-body col-sm-6">
+          <h5 class="card-title">Travelling Alone ???</h5>
+          <p class="card-text">We're here to help you... Share Your extra tickets or Cab details to find a person to travel with. Make your boring journies to some memorable experiences.</p>
+          <a class="btn btn-primary btn-medium nav-link" style="background-color: rgb(76, 76, 76);" href="./cab" >CAB/TRAIN</a>
+        </div>
+        <div class="card-body col-sm-6">
+          <img class="card-img-top " src="https://images.unsplash.com/photo-1442570356633-6f94cdd73a48?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1055&q=80" alt="Card image cap">
+        </div>
+      </div>
+    </div>
+
+    <div style=" margin:35px; background-color: rgb(255, 255, 255, 0.8);">
+      <div class="row">
+        <div class="card-body col-sm-6">
+          <img class="card-img-top" src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="Card image cap">
+        </div>
+        <div class="card-body col-sm-6">
+          <h5 class="card-title">Last Minute Exam Preparation ??</h5>
+          <p class="card-text"> Rome is known for its stunning <strong> architecture</strong>,
+            with the Colleseum, Pantheon, and Trevi Fountain as the main
+            attractions.
+            <strong>towering cliffs</strong>.</p>
+            <a class ="nav-link btn btn-primary btn-medium " style="background-color: rgb(84, 16, 16);" href="./travel" >NOTES/PAPERS</a>
+        </div>
+      </div>
+    </div>
+
+
+
+ </div>
+ </div> 
+    <!-- <div class="grid">
         <div class="grid-item">
           <div class="card">
-            <img class="card-img " src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="Rome" />
+            <img class="card-image " src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="Rome" />
             <div class="card-content">
               <h1 class="card-header">Last Minute Exam Preparation ??</h1>
               <p class="card-text">
@@ -49,7 +112,7 @@ div.card {
         <div class="grid-item">
           <div class="card">
             <img
-              class="card-img"
+              class="card-image"
               src="https://images.unsplash.com/photo-1503457574462-bd27054394c1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
               alt="Grand Canyon"
             />
@@ -67,7 +130,7 @@ div.card {
         </div>
         <div class="grid-item">
           <div class="card">
-            <img class="card-img" src="https://images.unsplash.com/photo-1442570356633-6f94cdd73a48?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1055&q=80" alt="Maldives" />
+            <img class="card-image" src="https://images.unsplash.com/photo-1442570356633-6f94cdd73a48?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1055&q=80" alt="Maldives" />
             <div class="card-content">
               <h1 class="card-header">Afraid of Travelling Alone ???</h1>
               <p class="card-text">
@@ -77,7 +140,7 @@ div.card {
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
    
 
